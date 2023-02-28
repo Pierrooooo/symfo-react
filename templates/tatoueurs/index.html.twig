@@ -1,0 +1,51 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Tatoueurs index{% endblock %}
+
+{% block body %}
+    <h1>Tatoueurs index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>FirstName</th>
+                <th>LastName</th>
+                <th>Instagram</th>
+                <th>Email</th>
+                <th>Description</th>
+                <th>Image_url</th>
+                <th>Created_at</th>
+                <th>Updated_at</th>
+                <th>AllColors</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for tatoueur in tatoueurs %}
+            <tr>
+                <td>{{ tatoueur.id }}</td>
+                <td>{{ tatoueur.firstName }}</td>
+                <td>{{ tatoueur.lastName }}</td>
+                <td>{{ tatoueur.instagram }}</td>
+                <td>{{ tatoueur.email }}</td>
+                <td>{{ tatoueur.description }}</td>
+                <td>{{ tatoueur.imageUrl }}</td>
+                <td>{{ tatoueur.createdAt ? tatoueur.createdAt|date('Y-m-d H:i:s') : '' }}</td>
+                <td>{{ tatoueur.updatedAt ? tatoueur.updatedAt|date('Y-m-d H:i:s') : '' }}</td>
+                <td>{{ tatoueur.allColors ? 'Yes' : 'No' }}</td>
+                <td>
+                    <a href="{{ path('app_tatoueurs_show', {'id': tatoueur.id}) }}">show</a>
+                    <a href="{{ path('app_tatoueurs_edit', {'id': tatoueur.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="11">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_tatoueurs_new') }}">Create new</a>
+{% endblock %}

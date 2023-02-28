@@ -1,0 +1,13 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Edit Tatoueurs{% endblock %}
+
+{% block body %}
+    <h1>Edit Tatoueurs</h1>
+
+    {{ include('tatoueurs/_form.html.twig', {'button_label': 'Update'}) }}
+
+    <a href="{{ path('app_tatoueurs_index') }}">back to list</a>
+
+    {{ include('tatoueurs/_delete_form.html.twig') }}
+{% endblock %}

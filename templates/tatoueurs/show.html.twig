@@ -1,0 +1,58 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Tatoueurs{% endblock %}
+
+{% block body %}
+    <h1>Tatoueurs</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ tatoueur.id }}</td>
+            </tr>
+            <tr>
+                <th>FirstName</th>
+                <td>{{ tatoueur.firstName }}</td>
+            </tr>
+            <tr>
+                <th>LastName</th>
+                <td>{{ tatoueur.lastName }}</td>
+            </tr>
+            <tr>
+                <th>Instagram</th>
+                <td>{{ tatoueur.instagram }}</td>
+            </tr>
+            <tr>
+                <th>Email</th>
+                <td>{{ tatoueur.email }}</td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>{{ tatoueur.description }}</td>
+            </tr>
+            <tr>
+                <th>Image_url</th>
+                <td>{{ tatoueur.imageUrl }}</td>
+            </tr>
+            <tr>
+                <th>Created_at</th>
+                <td>{{ tatoueur.createdAt ? tatoueur.createdAt|date('Y-m-d H:i:s') : '' }}</td>
+            </tr>
+            <tr>
+                <th>Updated_at</th>
+                <td>{{ tatoueur.updatedAt ? tatoueur.updatedAt|date('Y-m-d H:i:s') : '' }}</td>
+            </tr>
+            <tr>
+                <th>AllColors</th>
+                <td>{{ tatoueur.allColors ? 'Yes' : 'No' }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_tatoueurs_index') }}">back to list</a>
+
+    <a href="{{ path('app_tatoueurs_edit', {'id': tatoueur.id}) }}">edit</a>
+
+    {{ include('tatoueurs/_delete_form.html.twig') }}
+{% endblock %}
